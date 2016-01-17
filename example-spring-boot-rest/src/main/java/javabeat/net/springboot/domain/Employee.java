@@ -1,12 +1,12 @@
 package javabeat.net.springboot.domain;
 
-import com.google.common.base.Objects;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import com.google.common.base.Objects;
 
 @Entity
 public class Employee {
@@ -31,13 +31,9 @@ public class Employee {
     }
 
     public Employee(final String id, final String name,final String city) {
-        this.id = id;
+        this.setId(id);
         this.name = name;
         this.city = city;
-    }
-
-    public String getId() {
-        return id;
     }
 
     public String getName() {
@@ -59,9 +55,17 @@ public class Employee {
     @Override
     public String toString() {
         return Objects.toStringHelper(this)
-                .add("id", id)
+                .add("id", getId())
                 .add("name", name)
                 .add(city, city)
                 .toString();
     }
+
+	public String getId() {
+		return id;
+	}
+
+	public void setId(String id) {
+		this.id = id;
+	}
 }
